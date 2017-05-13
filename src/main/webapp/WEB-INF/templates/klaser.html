@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout ::site-head">
+<title>Klaser gier</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all" href="../../css/klaser.css" th:href="@{/css/klaser.css}" />
+</head>
+
+<body>
+  <header th:replace="layout :: site-header" />
+  <div>
+    <h2 th:text="#{title.list}" style="display: inline;">Lista gier</h2>
+  </div>
+  
+  <div class="listaGier" th:unless="${#lists.isEmpty(gryWszystkie)}">
+    <table>
+      <thead>
+        <tr>
+          <th th:text="#{klaser.id}">id</th>
+          <th th:text="#{klaser.tytul}">tytul</th>
+          <th th:text="#{klaser.autor}">autor</th>
+          <th th:text="#{klaser.gatunek}">gatunek</th>
+          <th th:text="#{klaser.krajProdukcji}">krajProdukcji</th>
+          <th th:text="#{klaser.cenaWypozyczenia}">cenaWypozyczenia</th>
+          <th th:text="#{klaser.dataDodaniaGry}">dataDodaniaGry</th>
+          <th th:text="#{klaser.status}">status</th>
+          <th th:text="#{klaser.operacje}">operacje</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="gra : ${gryWszystkie}">
+          <form action="#" th:action="@{/gry}" th:object="${gra}" method="post">
+          <td th:text="${gra.id}">1</td>
+          <td th:text="${gra.tytul}">Długi tytul</td>
+          <td th:text="${gra.autor}">zł</td>
+          <td th:text="${gra.gatunek}">100</td>
+          <td th:text="${gra.krajProdukcji}">Polska</td>
+          <td th:text="${{gra.cenaWypozyczenia}}">5.12</td>
+          <td th:text="${{gra.dataDodaniaGry}}">2011/13/01</td>
+          <td th:text="#{${'klaser.status.' + gra.status}}">Nowa</td>
+          <td>
+            <button type="submit" name="remove" th:value="${gra.id}"
+            th:text="#{klaser.remove}">Dell</button>
+            
+            <a href="gra.html" th:href="@{|/gry/${gra.id}|}" >
+            <button type="button" th:text="#{klaser.edit}">Editt</button></a>
+          </td>
+          </form>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <footer th:replace="layout :: site-footer" />
+</body>
+</html>

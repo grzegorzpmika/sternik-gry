@@ -1,0 +1,34 @@
+<!DOCTYPE html >
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="site-head">
+<title th:text="#{title.application}">Wypożyczalnia gier</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all" href="../../css/klaser.css" th:href="@{/css/klaser.css}" />
+<link rel="icon" href="../../imgages/free-movies-online.jpg" th:href="@{/images/free-movies-online.jpg}" />
+</head>
+
+<body>
+
+  <header th:fragment="site-header">
+    <a href="index.html" th:href="@{/}"><img src="../../images/Movies.jpg" th:src="@{/images/Movies.jpg}"/> </a>
+    <a href="klaser.html" th:href="@{/gry}">Wszystkie gry</a>
+    <a href="wypozycz.html" th:href="@{/wypozycz}">Gry do wypożyczenia</a>
+    <a href="gra.html" th:href="@{/gry/create}">Dodaj gre</a>
+
+  </header>
+
+  <div>
+    <h2 th:text="#{title.list}" style="display: inline;">Wypożyczalnia gier</h2>
+    <img src="../../images/Movies.jpg" alt="Klaser logo" title="Klaser logo" th:src="@{/images/Movies.jpg}"
+      th:alt-title="#{title.application}" style="float: right;" />
+  </div>
+
+  <footer th:fragment="site-footer"> 
+  Grzegorz Mika <a href="https://github.com/grzegorzpmika/sternik-gry"> Source code</a>
+  &copy; Sternik 2017
+  </footer>
+
+</body>
+</html>
