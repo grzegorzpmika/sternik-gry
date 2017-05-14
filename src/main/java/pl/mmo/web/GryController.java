@@ -39,7 +39,7 @@ public class GryController {
         return Arrays.asList(Status.ALL);
     }
 
-    @RequestMapping(value = "/filmy/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/gry/{id}", method = RequestMethod.GET)
     public String view(@PathVariable("id") Long id, final ModelMap model) {
         Optional<Gra> result;
         result = klaserService.findById(id);
